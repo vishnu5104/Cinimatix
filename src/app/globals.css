@@ -1,3 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+body {
+  @apply leading-[normal] m-0;
+}
+*,
+::before,
+::after {
+  border-width: 0;
+}
+
+.bg-dk{
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.06);
+  
+  backdrop-filter: blur(10px);
+}
