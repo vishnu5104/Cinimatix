@@ -1,19 +1,44 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body {
-  @apply leading-[normal] m-0;
-}
-*,
-::before,
-::after {
-  border-width: 0;
+
+.bg-gray{
+  border-radius: 50px;
+background: rgba(255, 255, 255, 0.06);
+backdrop-filter: blur(10px);
 }
 
-.bg-dk{
-  border-radius: 50px;
-  background: rgba(255, 255, 255, 0.06);
-  
-  backdrop-filter: blur(10px);
+.bg-text-ddi{
+  background: linear-gradient(270deg, #FF3C6A -13.53%, #FFAF36 54.06%, #5200FF 116.45%);
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+body {
+  background-color: black;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  padding-top: 60px;
+  padding-left: 220px;
+  padding-right: 220px;
+  padding-bottom: 585px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 750px) {
+  body {
+    padding-left: 55px;
+    padding-right: 55px;
+  }
+}
+
+@media (max-width: 1050px) {
+  body {
+    padding-left: 110px;
+    padding-right: 110px;
+  }
 }
