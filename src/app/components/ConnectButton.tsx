@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import styles from "@/css/sigin.module.css";
-import { signIn, signOut, useSession } from "next-auth/react";
 const ConnectButton = () => {
   const router = useRouter();
   const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -29,31 +27,13 @@ const ConnectButton = () => {
             className="cursor-pointer px-4 py-2 hover:bg-gray-200 flex justify-center"
             onClick={() => handleOptionClick("connect-as-user")}
           >
-            <a
-              href={`/api/auth/signin`}
-              className={styles.buttonPrimary}
-              onClick={(e) => {
-                e.preventDefault();
-                signIn("worldcoin");
-              }}
-            >
-              Sign in As User
-            </a>
+            <w3m-connect-button label="User" />
           </div>
           <div
             className="cursor-pointer px-4 py-2 hover:bg-gray-200 flex justify-center"
             onClick={() => handleOptionClick("connect-as-investor")}
           >
-            <a
-              href={`/api/auth/signin`}
-              className={styles.buttonPrimary}
-              onClick={(e) => {
-                e.preventDefault();
-                signIn("worldcoin");
-              }}
-            >
-              Sign in As Investor
-            </a>
+            <w3m-connect-button label="Investor" />
           </div>
         </div>
       )}
