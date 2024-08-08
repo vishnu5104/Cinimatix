@@ -1,9 +1,17 @@
-import React from 'react'
+"use client";
+
+import React from "react";
+
+import { useAccount } from "wagmi";
 
 const ConnectAsUser = () => {
-  return (
-    <div>ConnectAsUser</div>
-  )
-}
+  const { address, isConnecting, isDisconnected } = useAccount();
 
-export default ConnectAsUser
+  return (
+    <>
+      <div className="">Wallet Address {address}</div>
+    </>
+  );
+};
+
+export default ConnectAsUser;
