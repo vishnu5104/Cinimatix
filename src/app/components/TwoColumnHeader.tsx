@@ -14,12 +14,14 @@ import { FaUserCircle } from "react-icons/fa";
 
 import { SiSpringCreators } from "react-icons/si";
 
+import { useRouter } from "next/navigation";
+
 const explore = [
   {
     name: "Switch to Creator",
     description:
       "To Post the Theme, Trailer ,Movie  you need to swaitch to Creator Account",
-    href: "#",
+    href: "switch-to-creator",
     icon: SiSpringCreators,
   },
 
@@ -46,7 +48,14 @@ const explore = [
   },
 ];
 
-export default function FlowHeader() {
+export default function TwoColumnHeader() {
+  const router = useRouter();
+
+  const handleNavigation = (href: string) => {
+    if (href !== "#") {
+      router.push(href);
+    }
+  };
   return (
     <Popover className="relative">
       <PopoverButton className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 ">

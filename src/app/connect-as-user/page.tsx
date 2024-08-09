@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { signOut, useSession } from "next-auth/react";
 import { useAccount } from "wagmi";
 import { useRouter } from "next/navigation";
-import FlowHeader from "../components/FlowHeader";
+import TwoColumnHeader from "@/components/TwoColumnHeader";
 import PostCard from "@/components/PostCard";
 import { Button } from "@/components/ui/button";
 
@@ -32,7 +32,7 @@ const ConnectAsUser = () => {
       <div className="w-full flex top-0 ">
         <div>CINIMATIX</div>
         <div className="flex-grow flex items-start justify-center mt-10">
-          <FlowHeader />
+          <TwoColumnHeader />
         </div>
         <div className="relative top-2">
           <w3m-button />
