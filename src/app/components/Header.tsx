@@ -1,24 +1,44 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import ConnectButton from "./ConnectButton";
 import SignIn from "./SignIn";
 
 const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
-    <header
-      className={`w-[1480px] h-[80px] rounded-31xl bg-gray flex flex-row items-center justify-between pl-[60px] pr-[30px] box-border top-[0] z-[99] sticky max-w-full gap-5 lg:pl-[30px] lg:box-border`}
-    >
+    <header className="w-full h-[80px] bg-gray flex items-center justify-between px-4 lg:px-8 z-[99] sticky top-0">
       <div className="text-[20px] font-[700] text-orange-500">Cinimatix</div>
-      <div className="flex-grow"></div>{" "}
-      <div className="flex text-white justify-center items-center gap-[30px] mx-auto">
-        <a>Home</a>
-        <a>Features</a>
-        <a>About</a>
+      <div className="lg:hidden">
+        <button onClick={toggleMenu} className="text-white">
+          {menuOpen ? "Close" : "Menu"}
+        </button>
       </div>
-      <div className="flex-grow"></div>
-      <SignIn />
+      <nav
+        className={`${
+          menuOpen ? "flex" : "hidden"
+        } fixed top-[100px] right-0 bg-gray w-full h-fit pt-[20px] pb-[20px] flex-col items-center justify-center px-5 transition-transform transform lg:static lg:flex lg:flex-row lg:h-auto lg:w-[500px] lg:bg-transparent lg:justify-between gap-[30px] lg:translate-x-0`}
+      >
+        <a className="text-white text-lg lg:text-base" href="#home">
+          Home
+        </a>
+        <a className="text-white text-lg lg:text-base" href="#features">
+          Features
+        </a>
+        <a className="text-white text-lg lg:text-base" href="#about">
+          About
+        </a>
+        <div className="lg:hidden mt-4">
+          <SignIn />
+        </div>
+      </nav>
+      <div className="hidden lg:flex items-center">
+        <SignIn />
+      </div>
     </header>
   );
 };

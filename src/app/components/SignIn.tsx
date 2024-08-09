@@ -2,7 +2,7 @@
 
 import React from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
-import ConnectButton from "./ConnectButton"; // Assuming it's in the same directory
+import ConnectButton from "./ConnectButton";
 import Spinner from "./Spinner";
 
 const SignIn = () => {
