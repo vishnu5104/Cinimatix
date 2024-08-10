@@ -13,6 +13,7 @@ export const userRouter = router({
       z.object({
         name: z.string(),
         theme: z.string(),
+        thumbnail: z.string(),
       })
     )
     .mutation(async (opts) => {
@@ -21,6 +22,7 @@ export const userRouter = router({
         data: {
           name: input.name,
           theme: input.theme,
+          thumbnail: input.thumbnail,
         },
       });
     }),
