@@ -21,7 +21,7 @@
       "@/*": ["./src/app/*"],
       "@blockchain/*": ["./src/blockchain/*"],
       "@prisma/*": ["./prisma/*"],
-      "@trpcserver/*": ["./src/server/*"]
+      "@server/*": ["./src/server/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
