@@ -6,6 +6,7 @@ import Web3ModalProvider from "@/context/Web3ModelProvider";
 import SessionWrapper from "@/components/SessionWrapper";
 import { wagmiConfig } from "@blockchain/config/index";
 import { cookieToInitialState } from "wagmi";
+import { TRPCProvider } from "./components/TRPCProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,17 +26,19 @@ export default function RootLayout({
   );
 
   return (
-    <SessionWrapper>
-      <html lang="en">
-        <body
-          className={`${inter.className} flex flex-col items-start justify-start box-border leading-[normal] tracking-[normal]`}
-        >
-          <div className="w-[901px] [filter:blur(600px)] rounded-[50%] [background:linear-gradient(180deg,_#7631ba,_rgba(137,_78,_196,_0))]" />
-          <Web3ModalProvider initialState={initialState}>
-            {children}
-          </Web3ModalProvider>
-        </body>
-      </html>
-    </SessionWrapper>
+    <TRPCProvider>
+      <SessionWrapper>
+        <html lang="en">
+          <body
+            className={`${inter.className} flex flex-col items-start justify-start box-border leading-[normal] tracking-[normal]`}
+          >
+            <div className="w-[901px] [filter:blur(600px)] rounded-[50%] [background:linear-gradient(180deg,_#7631ba,_rgba(137,_78,_196,_0))]" />
+            <Web3ModalProvider initialState={initialState}>
+              {children}
+            </Web3ModalProvider>
+          </body>
+        </html>
+      </SessionWrapper>
+    </TRPCProvider>
   );
 }

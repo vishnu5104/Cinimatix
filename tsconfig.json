@@ -19,7 +19,9 @@
     ],
     "paths": {
       "@/*": ["./src/app/*"],
-      "@blockchain/*": ["./src/blockchain/*"]
+      "@blockchain/*": ["./src/blockchain/*"],
+      "@prisma/*": ["./prisma/*"],
+      "@server/*": ["./src/server/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
