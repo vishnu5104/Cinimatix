@@ -21,7 +21,7 @@ const SwitchToCreator = () => {
     setIsDialogOpen(true);
   };
 
-  const handleDialogSubmit = (formData) => {
+  const handleDialogSubmit = (formData: any) => {
     const { title, theme, thumbnail } = formData;
 
     console.log("Form Data:", { title, theme, thumbnail });

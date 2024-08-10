@@ -21,11 +21,11 @@ const DialogModel = ({ isDialogOpen, setIsDialogOpen, onSubmit }: any) => {
   const [thumbnail, setThumbnail] = useState(null);
   const [thumbnailUrl, setThumbnailUrl] = useState("");
 
-  const handleFileChange = (e) => {
+  const handleFileChange = (e: any) => {
     setThumbnail(e.target.files[0]);
   };
 
-  const handleUploadToIPFS = async (file) => {
+  const handleUploadToIPFS = async (file: any) => {
     if (!file) return;
 
     try {
