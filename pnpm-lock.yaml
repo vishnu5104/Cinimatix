@@ -90,6 +90,12 @@ importers:
         specifier: ^3.23.8
         version: 3.23.8
     devDependencies:
+      '@nomicfoundation/hardhat-ignition':
+        specifier: ^0.15.5
+        version: 0.15.5(@nomicfoundation/hardhat-verify@2.0.9(hardhat@2.22.8(bufferutil@4.0.8)(supports-color@8.1.1)(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4))(typescript@5.5.4)(utf-8-validate@6.0.4))(supports-color@8.1.1))(bufferutil@4.0.8)(hardhat@2.22.8(bufferutil@4.0.8)(supports-color@8.1.1)(ts-node@10.9.2(@types/node@20.14.14)(typescript@5.5.4))(typescript@5.5.4)(utf-8-validate@6.0.4))(supports-color@8.1.1)(utf-8-validate@6.0.4)
+      '@nomicfoundation/hardhat-ignition-ethers':
+        specifier: ^0.15.5
+        version: 0.15.5(kad7tnweruocyvhomaodfqkjmq)
       '@nomicfoundation/hardhat-toolbox':
         specifier: ^5.0.0
         version: 5.0.0(2jwa5df3cdbz3rohojonddoe7e)

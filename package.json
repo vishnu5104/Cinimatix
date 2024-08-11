@@ -39,6 +39,8 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@nomicfoundation/hardhat-ignition": "^0.15.5",
+    "@nomicfoundation/hardhat-ignition-ethers": "^0.15.5",
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
     "@types/node": "^20",
     "@types/react": "^18",

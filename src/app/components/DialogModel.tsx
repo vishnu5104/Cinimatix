@@ -12,19 +12,20 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-const JWT = process.env.JWT;
+const JWT =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiJiYmYyZDIzMy02ZjgwLTRhYmYtYjlhYy03MDc1ODhmZGJkOWMiLCJlbWFpbCI6InZpc2hudXM1MTA0MTJAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInBpbl9wb2xpY3kiOnsicmVnaW9ucyI6W3siaWQiOiJGUkExIiwiZGVzaXJlZFJlcGxpY2F0aW9uQ291bnQiOjF9LHsiaWQiOiJOWUMxIiwiZGVzaXJlZFJlcGxpY2F0aW9uQ291bnQiOjF9XSwidmVyc2lvbiI6MX0sIm1mYV9lbmFibGVkIjpmYWxzZSwic3RhdHVzIjoiQUNUSVZFIn0sImF1dGhlbnRpY2F0aW9uVHlwZSI6InNjb3BlZEtleSIsInNjb3BlZEtleUtleSI6Ijk4OGUyNzliM2E4YTExNzVhNWJjIiwic2NvcGVkS2V5U2VjcmV0IjoiOGE5MjYyNzI5NDJhMGM1NzA4ZWIwNzhlNzdkNDM2NzU1ODY3YzRkYTUxNWQxZjE0MDMxODkwZDljN2ZkNWM0NiIsImlhdCI6MTcyMzI5ODY1MX0.EhWRF95QnPson9C_jGVmgilCoxEqXg9BkI8BJw5aGZE";
 
 console.log("the key", JWT);
 const DialogModel = ({ isDialogOpen, setIsDialogOpen, onSubmit }: any) => {
   const [title, setTitle] = useState("");
+
   const [theme, setTheme] = useState("");
   const [thumbnail, setThumbnail] = useState(null);
   const [thumbnailUrl, setThumbnailUrl] = useState("");
 
   const handleFileChange = (e: any) => {
-    setThumbnail(e.target.files[0]);
+    const file = e.target.files[0];
   };
-
   const handleUploadToIPFS = async (file: any) => {
     if (!file) return;
 
