@@ -16,8 +16,18 @@ model User {
 }
 
 model File {
-  id       Int      @id @default(autoincrement())
-  url      String   @unique
-  userId   Int
+  id         Int      @id @default(autoincrement())
+  url        String   @unique
+  userId     Int
   uploadedAt DateTime @default(now())
+  votes      Vote[]   @relation("FileVotes") 
+}
+
+model Vote {
+  id        Int      @id @default(autoincrement())
+  fileId    Int
+  userId    Int
+  createdAt DateTime @default(now())
+
+  file      File     @relation("FileVotes", fields: [fileId], references: [id])
 }

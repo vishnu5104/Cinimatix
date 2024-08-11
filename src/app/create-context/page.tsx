@@ -110,7 +110,11 @@ const CreateContext = () => {
       <div className="flex flex-wrap gap-[20px] ml-[30px] mt-[20px]">
         {getFiles.data?.map((file, index) => (
           <div key={index}>
-            <ThumbnailCard link={file.url} />
+            <ThumbnailCard
+              link={file.url}
+              fileId={file.id}
+              userId={file.userId}
+            />
           </div>
         ))}
       </div>
