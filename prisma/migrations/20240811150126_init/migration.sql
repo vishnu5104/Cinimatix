@@ -9,6 +9,18 @@ CREATE TABLE "User" (
 );
 
 -- CreateTable
+CREATE TABLE "Post" (
+    "id" SERIAL NOT NULL,
+    "walletAddress" TEXT,
+    "userId" TEXT,
+    "title" TEXT,
+    "theme" TEXT,
+    "thumbnail" TEXT,
+
+    CONSTRAINT "Post_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "File" (
     "id" SERIAL NOT NULL,
     "url" TEXT NOT NULL,

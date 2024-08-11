@@ -9,12 +9,38 @@ export const userRouter = router({
     return await prisma.user.findMany();
   }),
 
+  getPosts: procedure.query(async () => {
+    return await prisma.post.findMany();
+  }),
+
+  addPost: procedure
+    .input(
+      z.object({
+        walletAddress: z.string(),
+        userId: z.string(),
+        title: z.string(),
+        theme: z.string(),
+        thumbnail: z.string(),
+      })
+    )
+    .mutation(async ({ input }) => {
+      return await prisma.post.create({
+        data: {
+          walletAddress: input.walletAddress,
+          userId: input.userId,
+          title: input.title,
+          theme: input.theme,
+          thumbnail: input.thumbnail,
+        },
+      });
+    }),
+
   addUser: procedure
     .input(
       z.object({
         name: z.string(),
         theme: z.string(),
-        thumbnailId: z.number().optional(),
+        thumbnail: z.string(),
       })
     )
     .mutation(async ({ input }) => {
@@ -22,11 +48,7 @@ export const userRouter = router({
         data: {
           name: input.name,
           theme: input.theme,
-          thumbnail: input.thumbnailId
-            ? {
-                connect: { id: input.thumbnailId },
-              }
-            : undefined,
+          thumbnail: input.thumbnail,
         },
       });
     }),
@@ -56,20 +78,22 @@ export const userRouter = router({
       z.object({
         fileId: z.number(),
         userId: z.number(),
+        // verificationResult: z.boolean(), // Added this to pass the verification result
       })
     )
     .mutation(async ({ input }) => {
       // Check if user has already voted for this file
+
+      // if (!input.verificationResult) {
+      //   throw new Error("Verification failed, vote not added.");
+      // }
+
       await prisma.vote.findFirst({
         where: {
           fileId: input.fileId,
           userId: input.userId,
         },
       });
-
-      // if (existingVote) {
-      //   throw new Error("User has already voted for this file.");
-      // }
 
       // Create a new vote
       return await prisma.vote.create({

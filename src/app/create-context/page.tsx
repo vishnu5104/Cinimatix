@@ -81,7 +81,7 @@ const CreateContext = () => {
   };
 
   return (
-    <div>
+    <div className="w-full flex flex-col justify-between items-center mx-[20px]">
       <h1>Thumbnail Design Context</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>

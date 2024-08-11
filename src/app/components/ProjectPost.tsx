@@ -5,7 +5,7 @@ import { Button } from "./ui/button";
 const ProjectPost = ({ link }: { link: string }) => {
   return (
     <>
-      <div className="w-[542px] h-[296px]">
+      <div className="w-[542px] h-[296px] bg-white text-black">
         <div>
           <div>UserId: {}</div>
           <div>WalletId: {}</div>

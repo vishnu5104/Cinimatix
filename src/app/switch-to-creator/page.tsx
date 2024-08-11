@@ -3,17 +3,35 @@
 import React, { useState } from "react";
 import ProjectSetup from "@/components/ProjectSetup";
 import TwoColumnHeader from "@/components/TwoColumnHeader";
-
+import { useAccount } from "wagmi";
 import DialogModel from "@/components/DialogModel";
 import { trpc } from "@server/client";
+import ProjectPost from "@/components/ProjectPost";
+import { signOut, useSession } from "next-auth/react";
 
 const SwitchToCreator = () => {
+  const { address } = useAccount();
+  const { data: session, status } = useSession();
+
+  console.log(
+    "the data od ses, for waalet?",
+    status,
+    session?.user?.name,
+    address
+  );
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const getUsers = trpc.user.getUsers.useQuery();
-  const addUsers = trpc.user.addUsers.useMutation({
+  // const getUsers = trpc.user.getUsers.useQuery();
+  const getPosts = trpc.user.getPosts.useQuery();
+  const addPost = trpc.user.addPost.useMutation({
     onSettled: () => {
-      getUsers.refetch();
+      getPosts.refetch();
+    },
+    onSuccess: () => {
+      console.log("File uploaded successfully!");
+    },
+    onError: (error) => {
+      console.error("Error uploading file on post:", error);
     },
   });
 
@@ -26,11 +44,23 @@ const SwitchToCreator = () => {
 
     console.log("Form Data:", { title, theme, thumbnail });
 
-    addUsers.mutate({
-      name: title,
-      theme: theme,
-      thumbnail: thumbnail,
-    });
+    addPost.mutate(
+      {
+        userId: session?.user?.name ?? "",
+        walletAddress: address ?? "",
+        title: title,
+        theme: theme,
+        thumbnail: thumbnail,
+      },
+      {
+        onSuccess: () => {
+          console.log("is scuesss!");
+        },
+        onError: (error) => {
+          console.error("Error uploading file th creator:", error);
+        },
+      }
+    );
   };
 
   return (
@@ -49,7 +79,8 @@ const SwitchToCreator = () => {
         <ProjectSetup onNewProjectClick={handleNewProjectClick} />
       </div>
       <div>Projects</div>
-      {JSON.stringify(getUsers.data)}
+      {JSON.stringify(getPosts.data)}
+      <ProjectPost />
       <div>
         <DialogModel
           isDialogOpen={isDialogOpen}
