@@ -28,9 +28,9 @@ const ProjectPost = ({
           />
         </div>
         <div>Theme to post</div>
-        <div className="flex">
+        {/* <div className="flex">
           <Button>Fund</Button>
-        </div>
+        </div> */}
       </div>
     </>
   );

@@ -80,37 +80,44 @@ const ConnectAsInvestor = () => {
   }
 
   return (
-    <form onSubmit={submit}>
-      <h2>Fund a Creator With ETH Amount</h2>
-      {getPosts.data?.map((post, index) => (
-        <ProjectPost
-          key={index}
-          link={post.thumbnail ?? ""} // Add null coalescing operator to handle null values
-          userId={post.userId ?? ""}
-          walletId={post.userId ?? ""}
-        />
-      ))}
-      <input
-        name="creatorAddress"
-        placeholder="Creator's Wallet Address"
-        value={creatorAddress}
-        onChange={(e) => setCreatorAddress(e.target.value)}
-        required
-      />
-      <input
-        name="amount"
-        placeholder="Amount in ETH"
-        type="number"
-        step="0.01"
-        value={amount}
-        onChange={(e) => setAmount(e.target.value)}
-        required
-      />
-      <button disabled={isPending} type="submit">
-        {isPending ? "Confirming..." : "Fund"}
-      </button>
-      {hash && <div>Transaction Hash: {hash}</div>}
-    </form>
+    <>
+      <div className="">
+        {getPosts.data?.map((post, index) => (
+          <ProjectPost
+            key={index}
+            link={post.thumbnail ?? ""} // Add null coalescing operator to handle null values
+            userId={post.userId ?? ""}
+            walletId={post.userId ?? ""}
+          />
+        ))}
+      </div>
+      <div className="mt-[300px]">
+        <form onSubmit={submit}>
+          <h2>Fund a Creator With ETH Amount</h2>
+
+          <input
+            name="creatorAddress"
+            placeholder="Creator's Wallet Address"
+            value={creatorAddress}
+            onChange={(e) => setCreatorAddress(e.target.value)}
+            required
+          />
+          <input
+            name="amount"
+            placeholder="Amount in ETH"
+            type="number"
+            step="0.01"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            required
+          />
+          <button disabled={isPending} type="submit">
+            {isPending ? "Confirming..." : "Fund"}
+          </button>
+          {hash && <div>Transaction Hash: {hash}</div>}
+        </form>
+      </div>
+    </>
   );
 };
 
