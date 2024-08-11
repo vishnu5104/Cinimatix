@@ -18,13 +18,13 @@ const JWT =
 console.log("the key", JWT);
 const DialogModel = ({ isDialogOpen, setIsDialogOpen, onSubmit }: any) => {
   const [title, setTitle] = useState("");
-
   const [theme, setTheme] = useState("");
   const [thumbnail, setThumbnail] = useState(null);
   const [thumbnailUrl, setThumbnailUrl] = useState("");
 
   const handleFileChange = (e: any) => {
     const file = e.target.files[0];
+    setThumbnail(file);
   };
   const handleUploadToIPFS = async (file: any) => {
     if (!file) return;
