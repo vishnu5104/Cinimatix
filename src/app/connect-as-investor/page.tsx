@@ -48,25 +48,38 @@ const ConnectAsInvestor = () => {
   const [creatorAddress, setCreatorAddress] = useState("");
   const [amount, setAmount] = useState("");
 
+  const ethToWei = (eth: number | string): string => {
+    if (typeof eth === "string") {
+      eth = parseFloat(eth);
+    }
+
+    if (isNaN(eth)) {
+      throw new Error("Invalid ETH amount");
+    }
+
+    // 1 ETH = 1e18 Wei
+    const wei = BigInt(Math.round(eth * 1e18));
+    return wei.toString();
+  };
   const { data: hash, isPending, writeContract } = useWriteContract();
 
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    const value = parseFloat(amount); // Keep the amount in ETH
+    const valueInWei = ethToWei(amount);
 
     writeContract({
       address: "0x3235f63AD203987fCD9c5658b701A4cc4EB7442C",
       abi: FundAllocatorABI,
       functionName: "fundCreator",
       args: [creatorAddress],
-      value: value, // Send ETH directly
+      value: BigInt(valueInWei), // Send ETH directly
     });
   }
 
   return (
     <form onSubmit={submit}>
-      <h2>Fund a Creator</h2>
+      <h2>Fund a Creator With ETH Amount</h2>
       <input
         name="creatorAddress"
         placeholder="Creator's Wallet Address"

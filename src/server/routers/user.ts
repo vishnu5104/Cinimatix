@@ -26,4 +26,20 @@ export const userRouter = router({
         },
       });
     }),
+  uploadFile: procedure
+    .input(
+      z.object({
+        userId: z.number(),
+        fileUrl: z.string().url(),
+      })
+    )
+    .mutation(async (opts) => {
+      const { input } = opts;
+      await prisma.file.create({
+        data: {
+          url: input.fileUrl,
+          userId: input.userId,
+        },
+      });
+    }),
 });

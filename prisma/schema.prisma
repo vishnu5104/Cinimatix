@@ -14,3 +14,10 @@ model User {
   theme  String?
   thumbnail String?
 }
+
+model File {
+  id       Int      @id @default(autoincrement())
+  url      String   @unique
+  userId   Int
+  uploadedAt DateTime @default(now())
+}
