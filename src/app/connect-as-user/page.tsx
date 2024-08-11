@@ -7,11 +7,13 @@ import { useRouter } from "next/navigation";
 import TwoColumnHeader from "@/components/TwoColumnHeader";
 import PostCard from "@/components/PostCard";
 import { Button } from "@/components/ui/button";
-
+import ProjectPost from "../components/ProjectPost";
+import { trpc } from "@server/client";
 const ConnectAsUser = () => {
   const { address } = useAccount();
   const { data: session, status } = useSession();
   const router = useRouter();
+  const getPosts = trpc.user.getPosts.useQuery();
 
   useEffect(() => {
     if (status !== "loading" && !session) {
@@ -39,8 +41,16 @@ const ConnectAsUser = () => {
         </div>
       </div>
       <div className="text-white">Post</div>
-      <PostCard />
-      <Button>Button to test</Button>
+      <div className="">
+        {getPosts.data?.map((post, index) => (
+          <ProjectPost
+            key={index}
+            link={post.thumbnail ?? ""} // Add null coalescing operator to handle null values
+            userId={post.userId ?? ""}
+            walletId={post.userId ?? ""}
+          />
+        ))}
+      </div>
     </>
   );
 };
