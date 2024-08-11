@@ -44,11 +44,11 @@ const SwitchToCreator = () => {
           <w3m-button />
         </div>
       </div>
-      <div>some</div>
+
       <div className="flex justify-center w-full mt-[30px]">
         <ProjectSetup onNewProjectClick={handleNewProjectClick} />
       </div>
-      <div>The data</div>
+      <div>Projects</div>
       {JSON.stringify(getUsers.data)}
       <div>
         <DialogModel

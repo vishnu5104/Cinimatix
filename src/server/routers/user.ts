@@ -42,4 +42,7 @@ export const userRouter = router({
         },
       });
     }),
+  getFiles: procedure.query(async () => {
+    return await prisma.file.findMany();
+  }),
 });
