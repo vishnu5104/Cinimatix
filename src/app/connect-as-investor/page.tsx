@@ -1,5 +1,7 @@
 "use client";
 
+import ProjectPost from "@/components/ProjectPost";
+import { trpc } from "@server/client";
 import React, { useState } from "react";
 import { useWriteContract } from "wagmi";
 
@@ -47,7 +49,7 @@ const FundAllocatorABI = [
 const ConnectAsInvestor = () => {
   const [creatorAddress, setCreatorAddress] = useState("");
   const [amount, setAmount] = useState("");
-
+  const getPosts = trpc.user.getPosts.useQuery();
   const ethToWei = (eth: number | string): string => {
     if (typeof eth === "string") {
       eth = parseFloat(eth);
@@ -80,6 +82,14 @@ const ConnectAsInvestor = () => {
   return (
     <form onSubmit={submit}>
       <h2>Fund a Creator With ETH Amount</h2>
+      {getPosts.data?.map((post, index) => (
+        <ProjectPost
+          key={index}
+          link={post.thumbnail ?? ""} // Add null coalescing operator to handle null values
+          userId={post.userId ?? ""}
+          walletId={post.userId ?? ""}
+        />
+      ))}
       <input
         name="creatorAddress"
         placeholder="Creator's Wallet Address"

@@ -74,13 +74,21 @@ const SwitchToCreator = () => {
           <w3m-button />
         </div>
       </div>
-
       <div className="flex justify-center w-full mt-[30px]">
         <ProjectSetup onNewProjectClick={handleNewProjectClick} />
       </div>
       <div>Projects</div>
-      {JSON.stringify(getPosts.data)}
-      <ProjectPost />
+      {/* {JSON.stringify(getPosts.data)} */}
+
+      {getPosts.data?.map((post, index) => (
+        <ProjectPost
+          key={index}
+          link={post.thumbnail ?? ""} // Add null coalescing operator to handle null values
+          userId={post.userId ?? ""}
+          walletId={post.userId ?? ""}
+        />
+      ))}
+
       <div>
         <DialogModel
           isDialogOpen={isDialogOpen}
